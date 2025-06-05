@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Sheet - Affan Enterprises</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+        h2 {
+            font-size: 1.5em;
+            font-weight: 400;
+            color: #555;
+        }
+        table {
+            width: 80%;
+            max-width: 700px;
+            margin: 30px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #e0e6ed;
+            padding: 15px 20px;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+        th {
+            background: #e9eff6;
+            color: #34495e;
+            font-weight: 600;
+            font-size: 1.1em;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        tr:hover td {
+            background-color: #f8fbfd;
+        }
+        input {
+            width: calc(100% - 2px);
+            padding: 8px;
+            border: 1px solid #cdd5df;
+            background: #fdfefe;
+            font-size: 1em;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        }
+        .total {
+            font-weight: bold;
+            background: #e0f7fa;
+            color: #00796b;
+            font-size: 1.1em;
+        }
+        .total-final {
+            background: #c8e6c9;
+            color: #2e7d32;
+            font-size: 1.2em;
+        }
+        table tr:first-child th:first-child { border-top-left-radius: 12px; }
+        table tr:first-child th:last-child { border-top-right-radius: 12px; }
+        table tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+        table tr:last-child td:last-child { border-bottom-right-radius: 12px; }
+    </style>
+</head>
+<body>
+
+    <h1>Balance Sheet</h1>
+    <h2>Student: Affan | Business: Affan Enterprises</h2>
+
+    <table>
+        <tr><th colspan="2">Assets</th></tr>
+        <tr><td>Cash</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
+        <tr><td>Accounts Receivable</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
+        <tr><td>Inventory</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
+        <tr><td>Property, Plant & Equipment (Net)</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
+        <tr><td class="total">Total Assets</td><td class="total" id="totalAssets">0.00</td></tr>
+
+        <tr><th colspan="2">Liabilities</th></tr>
+        <tr><td>Accounts Payable</td><td><input type="number" value="0" class="liability" oninput="calculateTotals()"></td></tr>
+        <tr><td>Loan Payable</td><td><input type="number" value="0" class="liability" oninput="calculateTotals()"></td></tr>
+        <tr><td>Salaries Payable</td><td><input type="number" value="0" class="liability" oninput="calculateTotals()"></td></tr>
+        <tr><td class="total">Total Liabilities</td><td class="total" id="totalLiabilities">0.00</td></tr>
+
+        <tr><th colspan="2">Equity</th></tr>
+        <tr><td>Owner's Capital</td><td><input type="number" value="0" class="equity" oninput="calculateTotals()"></td></tr>
+        <tr><td>Retained Earnings</td><td><input type="number" value="0" class="equity" oninput="calculateTotals()"></td></tr>
+        <tr><td class="total">Total Equity</td><td class="total" id="totalEquity">0.00</td></tr>
+
+        <tr><td class="total total-final">Liabilities + Equity</td><td class="total total-final" id="liabEquity">0.00</td></tr>
+    </table>
+
+    <script>
+        function calculateTotals() {
+            let assetTotal = sumValues('.asset');
+            let liabilityTotal = sumValues('.liability');
+            let equityTotal = sumValues('.equity');
+            let totalLE = parseFloat(liabilityTotal) + parseFloat(equityTotal);
+
+            document.getElementById('totalAssets').textContent = parseFloat(assetTotal).toFixed(2);
+            document.getElementById('totalLiabilities').textContent = parseFloat(liabilityTotal).toFixed(2);
+            document.getElementById('totalEquity').textContent = parseFloat(equityTotal).toFixed(2);
+            document.getElementById('liabEquity').textContent = totalLE.toFixed(2);
+        }
+
+        function sumValues(selector) {
+            const fields = document.querySelectorAll(selector);
+            let total = 0;
+            fields.forEach(field => {
+                total += parseFloat(field.value) || 0;
+            });
+            return total.toFixed(2);
+        }
+
+        window.onload = calculateTotals;
+    </script>
+</body>
+</html>

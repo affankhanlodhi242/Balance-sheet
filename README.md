@@ -1,4 +1,3 @@
-# Balance-sheet
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +8,17 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 20px;
-            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); /* Soft gradient background */
+            background: #1a1a2e; /* Dark background */
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: center; /* Center horizontally */
+            justify-content: center; /* Center vertically */
             min-height: 100vh;
-            color: #333;
+            color: #e0e0e0; /* Light text color */
         }
         h1, h2 {
             text-align: center;
-            color: #2c3e50;
+            color: #e0e0e0; /* Light text for headings */
             margin-bottom: 10px;
         }
         h1 {
@@ -29,28 +28,28 @@
         h2 {
             font-size: 1.5em;
             font-weight: 400;
-            color: #555;
+            color: #b0b0b0; /* Slightly darker light text */
         }
         table {
             width: 80%; /* Increased width for better readability */
             max-width: 700px; /* Max width to prevent stretching on large screens */
-            margin: 30px auto;
-            border-collapse: separate; /* Use separate for rounded corners on cells */
+            margin: 30px auto; /* Center table */
+            border-collapse: separate;
             border-spacing: 0;
-            background: #ffffff;
-            border-radius: 12px; /* More rounded corners */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
-            overflow: hidden; /* Ensures rounded corners apply to content */
+            background: #2a2a4a; /* Darker background for table */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+            overflow: hidden;
         }
         th, td {
-            border: 1px solid #e0e6ed; /* Lighter border */
-            padding: 15px 20px; /* More padding */
+            border: 1px solid #3a3a5a; /* Darker border */
+            padding: 15px 20px;
             text-align: left;
             transition: background-color 0.3s ease;
         }
         th {
-            background: #e9eff6; /* Lighter header background */
-            color: #34495e;
+            background: #3a3a5a; /* Darker header background */
+            color: #f0f0f0;
             font-weight: 600;
             font-size: 1.1em;
             position: sticky;
@@ -58,32 +57,33 @@
             z-index: 1;
         }
         tr:hover td {
-            background-color: #f8fbfd; /* Subtle hover effect */
+            background-color: #353555; /* Subtle hover effect */
         }
         input {
-            width: calc(100% - 2px); /* Adjust for border */
+            width: calc(100% - 2px);
             padding: 8px;
-            border: 1px solid #cdd5df; /* Soft border for inputs */
-            background: #fdfefe;
+            border: 1px solid #5a5a7a; /* Soft border for inputs */
+            background: #3a3a5a; /* Darker input background */
+            color: #f0f0f0; /* Light text in inputs */
             font-size: 1em;
-            border-radius: 6px; /* Rounded input fields */
-            box-sizing: border-box; /* Include padding and border in width */
+            border-radius: 6px;
+            box-sizing: border-box;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         input:focus {
             outline: none;
-            border-color: #4a90e2; /* Highlight on focus */
-            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+            border-color: #8a2be2; /* Purple highlight on focus */
+            box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.3);
         }
        .total {
             font-weight: bold;
-            background: #e0f7fa; /* Light blue for totals */
-            color: #00796b; /* Darker text for contrast */
+            background: #4a2a6a; /* Dark purple for totals */
+            color: #c080ff; /* Lighter purple text for contrast */
             font-size: 1.1em;
         }
        .total-final {
-            background: #c8e6c9; /* Light green for final balance */
-            color: #2e7d32;
+            background: #2a6a4a; /* Dark green for final balance */
+            color: #80ffc0; /* Lighter green text for contrast */
             font-size: 1.2em;
         }
         /* Specific rounded corners for table headers/footers */

@@ -8,17 +8,18 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 20px;
-            background: #1a1a2e; /* Dark background */
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); /* Soft gradient background */
             display: flex;
             flex-direction: column;
             align-items: center; /* Center horizontally */
             justify-content: center; /* Center vertically */
             min-height: 100vh;
-            color: #e0e0e0; /* Light text color */
+            color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll on animations */
         }
         h1, h2 {
             text-align: center;
-            color: #e0e0e0; /* Light text for headings */
+            color: #2c3e50;
             margin-bottom: 10px;
         }
         h1 {
@@ -28,28 +29,30 @@
         h2 {
             font-size: 1.5em;
             font-weight: 400;
-            color: #b0b0b0; /* Slightly darker light text */
+            color: #555;
         }
         table {
             width: 80%; /* Increased width for better readability */
             max-width: 700px; /* Max width to prevent stretching on large screens */
             margin: 30px auto; /* Center table */
-            border-collapse: separate;
+            border-collapse: separate; /* Use separate for rounded corners on cells */
             border-spacing: 0;
-            background: #2a2a4a; /* Darker background for table */
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
-            overflow: hidden;
+            background: #ffffff;
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
+            overflow: hidden; /* Ensures rounded corners apply to content */
+            opacity: 0; /* Start hidden for animation */
+            animation: fadeInScale 0.8s ease-out forwards; /* Table animation */
         }
         th, td {
-            border: 1px solid #3a3a5a; /* Darker border */
-            padding: 15px 20px;
+            border: 1px solid #e0e6ed; /* Lighter border */
+            padding: 15px 20px; /* More padding */
             text-align: left;
             transition: background-color 0.3s ease;
         }
         th {
-            background: #3a3a5a; /* Darker header background */
-            color: #f0f0f0;
+            background: #e9eff6; /* Lighter header background */
+            color: #34495e;
             font-weight: 600;
             font-size: 1.1em;
             position: sticky;
@@ -57,33 +60,32 @@
             z-index: 1;
         }
         tr:hover td {
-            background-color: #353555; /* Subtle hover effect */
+            background-color: #f8fbfd; /* Subtle hover effect */
         }
         input {
-            width: calc(100% - 2px);
+            width: calc(100% - 2px); /* Adjust for border */
             padding: 8px;
-            border: 1px solid #5a5a7a; /* Soft border for inputs */
-            background: #3a3a5a; /* Darker input background */
-            color: #f0f0f0; /* Light text in inputs */
+            border: 1px solid #cdd5df; /* Soft border for inputs */
+            background: #fdfefe;
             font-size: 1em;
-            border-radius: 6px;
-            box-sizing: border-box;
+            border-radius: 6px; /* Rounded input fields */
+            box-sizing: border-box; /* Include padding and border in width */
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         input:focus {
             outline: none;
-            border-color: #8a2be2; /* Purple highlight on focus */
-            box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.3);
+            border-color: #4a90e2; /* Highlight on focus */
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
         }
-       .total {
+      .total {
             font-weight: bold;
-            background: #4a2a6a; /* Dark purple for totals */
-            color: #c080ff; /* Lighter purple text for contrast */
+            background: #e0f7fa; /* Light blue for totals */
+            color: #00796b; /* Darker text for contrast */
             font-size: 1.1em;
         }
-       .total-final {
-            background: #2a6a4a; /* Dark green for final balance */
-            color: #80ffc0; /* Lighter green text for contrast */
+      .total-final {
+            background: #c8e6c9; /* Light green for final balance */
+            color: #2e7d32;
             font-size: 1.2em;
         }
         /* Specific rounded corners for table headers/footers */
@@ -91,33 +93,64 @@
         table tr:first-child th:last-child { border-top-right-radius: 12px; }
         table tr:last-child td:first-child { border-bottom-left-radius: 12px; }
         table tr:last-child td:last-child { border-bottom-right-radius: 12px; }
+
+        /* Animations */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+       .animated-row {
+            opacity: 0;
+            animation: slideInFromLeft 0.5s ease-out forwards;
+        }
+       .animated-row:nth-child(1) { animation-delay: 0.1s; }
+       .animated-row:nth-child(2) { animation-delay: 0.2s; }
+       .animated-row:nth-child(3) { animation-delay: 0.3s; }
+       .animated-row:nth-child(4) { animation-delay: 0.4s; }
+       .animated-row:nth-child(5) { animation-delay: 0.5s; }
+       .animated-row:nth-child(6) { animation-delay: 0.6s; }
+       .animated-row:nth-child(7) { animation-delay: 0.7s; }
+       .animated-row:nth-child(8) { animation-delay: 0.8s; }
+       .animated-row:nth-child(9) { animation-delay: 0.9s; }
+       .animated-row:nth-child(10) { animation-delay: 1.0s; }
+       .animated-row:nth-child(11) { animation-delay: 1.1s; }
+       .animated-row:nth-child(12) { animation-delay: 1.2s; }
+       .animated-row:nth-child(13) { animation-delay: 1.3s; }
+       .animated-row:nth-child(14) { animation-delay: 1.4s; }
+       .animated-row:nth-child(15) { animation-delay: 1.5s; }
     </style>
 </head>
 <body>
 
     <h1>Balance Sheet</h1>
-    <h2>Student: Affan | Business: Affan Enterprises</h2>
+    <h2>For the Period Ending May 31, 2025 | Affan Enterprises</h2>
 
     <table>
-        <tr><th colspan="2">Assets</th></tr>
-        <tr><td>Cash</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
-        <tr><td>Accounts Receivable</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
-        <tr><td>Inventory</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
-        <tr><td>Property, Plant & Equipment (Net)</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
-        <tr><td class="total">Total Assets</td><td class="total" id="totalAssets">0.00</td></tr>
+        <tr class="animated-row"><th colspan="2">Assets</th></tr>
+        <tr class="animated-row"><td>Cash</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
+        <tr class="animated-row"><td>Accounts Receivable</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
+        <tr class="animated-row"><td>Inventory</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
+        <tr class="animated-row"><td>Property, Plant & Equipment (Net)</td><td><input type="number" value="0" class="asset" oninput="calculateTotals()"></td></tr>
+        <tr class="animated-row"><td class="total">Total Assets</td><td class="total" id="totalAssets">0.00</td></tr>
 
-        <tr><th colspan="2">Liabilities</th></tr>
-        <tr><td>Accounts Payable</td><td><input type="number" value="0" class="liability" oninput="calculateTotals()"></td></tr>
-        <tr><td>Loan Payable</td><td><input type="number" value="0" class="liability" oninput="calculateTotals()"></td></tr>
-        <tr><td>Salaries Payable</td><td><input type="number" value="0" class="liability" oninput="calculateTotals()"></td></tr>
-        <tr><td class="total">Total Liabilities</td><td class="total" id="totalLiabilities">0.00</td></tr>
+        <tr class="animated-row"><th colspan="2">Liabilities</th></tr>
+        <tr class="animated-row"><td>Accounts Payable</td><td><input type="number" value="0" class="liability" oninput="calculateTotals()"></td></tr>
+        <tr class="animated-row"><td>Loan Payable</td><td><input type="number" value="0" class="liability" oninput="calculateTotals()"></td></tr>
+        <tr class="animated-row"><td>Salaries Payable</td><td><input type="number" value="0" class="liability" oninput="calculateTotals()"></td></tr>
+        <tr class="animated-row"><td class="total">Total Liabilities</td><td class="total" id="totalLiabilities">0.00</td></tr>
 
-        <tr><th colspan="2">Equity</th></tr>
-        <tr><td>Owner's Capital</td><td><input type="number" value="0" class="equity" oninput="calculateTotals()"></td></tr>
-        <tr><td>Retained Earnings</td><td><input type="number" value="0" class="equity" oninput="calculateTotals()"></td></tr>
-        <tr><td class="total">Total Equity</td><td class="total" id="totalEquity">0.00</td></tr>
+        <tr class="animated-row"><th colspan="2">Equity</th></tr>
+        <tr class="animated-row"><td>Owner's Capital</td><td><input type="number" value="0" class="equity" oninput="calculateTotals()"></td></tr>
+        <tr class="animated-row"><td>Retained Earnings</td><td><input type="number" value="0" class="equity" oninput="calculateTotals()"></td></tr>
+        <tr class="animated-row"><td class="total">Total Equity</td><td class="total" id="totalEquity">0.00</td></tr>
 
-        <tr><td class="total total-final">Liabilities + Equity</td><td class="total total-final" id="liabEquity">0.00</td></tr>
+        <tr class="animated-row"><td class="total total-final">Liabilities + Equity</td><td class="total total-final" id="liabEquity">0.00</td></tr>
     </table>
 
     <script>
